@@ -1,10 +1,16 @@
+//get values form input
+const dateFromInput = document.querySelector(".date-from");
+const dateToInput = document.querySelector(".date-to");
+
 //getting data
 const searchBitcoin = () => {
-  axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json`).then(response => {
+  const dateFrom = document.querySelector(".date-from").value;
+  const dateTo = document.querySelector(".date-to").value;
+  axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json?start=${dateFrom}&end=${dateTo}`).then(response => {
     const { data } = response;
     const date = Object.keys(data.bpi);
     const price = Object.values(data.bpi);
-    console.log(date, price);
+
     printCharts(date, price);
   });
 };
@@ -28,20 +34,5 @@ const printCharts = (date, price) => {
 
 searchBitcoin();
 
-// const getStockInfo = stockName => {
-//   axios
-//     .get(`https://api.iextrading.com/1.0/stock/${stockName}/chart`)
-//     .then(response => {
-//       const { data } = response;
-//       console.log(data);
-//       const labels = data.map(el => el.label);
-//       const prices = data.map(el => el.close);
-
-//       printCharts(labels, prices);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//     });
-// };
-
-// getStockInfo('amzn');
+dateFromInput.addEventListener("change", searchBitcoin);
+dateToInput.addEventListener("change", searchBitcoin);
