@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> {{title}} </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1> {{title}} </h1>
-    <p>Welcome to  {{title}} </p>
-  </body>
-  <script src="/javascripts/financial-data.js" charset="utf-8"></script>
+
+<head>
+  <title> Bit coin chart </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1> Bit coin chart</h1>
+
+  <div class="top-option">
+    <div class="adjust">
+      <div class="filter">
+        <label for="date-from">From:</label>
+        <input type="date" name="from">
+
+        <label for="date-to">To:</label>
+        <input type="date" name="date-to">
+      </div>
+      <div class="currency">
+        <select name="currency" id="currency">
+          <option value="">Euro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="values">
+      <div class="max">Max:</div>
+      <div class="min">Min:</div>
+    </div>
+
+
+  </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="/javascripts/financial-data.js" charset="utf-8"></script>
+
 </html>
